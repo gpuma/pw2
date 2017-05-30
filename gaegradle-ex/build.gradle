@@ -64,3 +64,6 @@ version = '1.0-SNAPSHOT'          // Version in generated output
 sourceCompatibility = 1.7  // App Engine Standard uses Java 7
 targetCompatibility = 1.7  // App Engine Standard uses Java 7
 // [END gradle]
+
+//si no tenemos clase Main utilizamos esto
+bootRepackage.enabled = false
