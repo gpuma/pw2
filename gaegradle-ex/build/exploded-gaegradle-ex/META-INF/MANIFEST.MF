@@ -1,2 +1,7 @@
 Manifest-Version: 1.0
+Spring-Boot-Classes: WEB-INF/classes/
+Start-Class: Example
+Spring-Boot-Lib: WEB-INF/lib/
+Spring-Boot-Version: 1.5.2.RELEASE
+Main-Class: org.springframework.boot.loader.WarLauncher
 

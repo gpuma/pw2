@@ -19,6 +19,7 @@ buildscript {    // Configuration for building
   }
   dependencies {
     classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'    // latest App Engine Gradle tasks
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE") //spring
   }
 }
 
@@ -34,12 +35,14 @@ repositories {   // repositories for Jar's you access in your code
 apply plugin: 'java'                              // standard Java tasks
 apply plugin: 'war'                               // standard Web Archive plugin
 apply plugin: 'com.google.cloud.tools.appengine'  // App Engine tasks
+apply plugin: 'org.springframework.boot'
 
 dependencies {
   providedCompile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
   compile 'com.google.appengine:appengine:+'
 // Add your dependencies here.
-
+  compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+  compile("org.springframework.boot:spring-boot-devtools")
 }
 
 // [START model]
