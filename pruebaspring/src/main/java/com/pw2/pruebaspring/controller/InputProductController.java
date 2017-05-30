@@ -1,5 +1,7 @@
 package com.pw2.pruebaspring.controller;
 
+import org.springframework.core.SpringVersion;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
@@ -13,6 +15,7 @@ public class InputProductController implements Controller {
     public ModelAndView handleRequest(HttpServletRequest request,
             HttpServletResponse response) throws Exception {
         logger.info("InputProductController called");
+        logger.info(SpringVersion.getVersion());
         return new ModelAndView("/WEB-INF/jsp/ProductForm.jsp");
     }
 }
