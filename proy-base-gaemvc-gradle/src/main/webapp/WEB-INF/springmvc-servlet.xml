@@ -14,6 +14,11 @@
         
     <context:component-scan base-package="pw2.controllers"/>
     <mvc:annotation-driven/>
+
+    <!--para que el despachador no capture estas peticiones-->
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/*.html" location="/"/>
+
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
@@ -22,8 +27,7 @@
     <!--
     <context:component-scan base-package="app19a.service"/>
      
-    <mvc:resources mapping="/css/**" location="/css/"/>
-    <mvc:resources mapping="/*.html" location="/"/>
+    
     
     -->
 </beans>
