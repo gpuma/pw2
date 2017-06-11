@@ -15,10 +15,4 @@ public class HolaController{
 		//usa el ViewResolver
 		return "inicio";
 	}
-
-	@RequestMapping("/prueba")
-	public String mostrarRecurso(){
-		//usa el ViewResolver
-		return "/WEB-INF/prueba.html";
-	}
 }
