@@ -1,10 +1,14 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
-        <servlet-name>Hola</servlet-name>
-        <servlet-class>pw2.controllers.HolaServlet</servlet-class>
-    </servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>    
+	</servlet>
+
     <servlet-mapping>
-        <servlet-name>Hola</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
