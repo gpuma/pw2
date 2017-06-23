@@ -1,0 +1,27 @@
+PROYECTO WEB BASE:
+
+Usa:
+- Google App Engine
+- Spring MVC
+- Gradle
+
+Requisitos para ejecutar este proyecto:
+1. Conexión a Internet
+2. JDK 1.7
+3. Gradle (incluido en el proyecto)
+
+Para ejecutar los siguientes comandos debe abrir una terminal y estar
+dentro de esta carpeta
+
+WINDOWS:
+gradlew appengineRun
+
+LINUX:
+sudo chmod +x ./gradlew
+./gradlew appengineRun
+
+Para asegurarse de que tienen la versión correcta de Java:
+WINDOWS
+gradlew -v
+LINUX
+./gradlew -v
