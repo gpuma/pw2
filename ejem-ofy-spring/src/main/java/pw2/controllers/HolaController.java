@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+//para pasar atributos en un redirect
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 @Controller
 public class HolaController{
 
@@ -34,9 +37,13 @@ public class HolaController{
 		return "redirect:/conductores";
 	}
 
+	//@RequestMapping(value="/eliminar/{nomusu}", method = RequestMethod.POST)
 	@RequestMapping("/eliminar/{nomusu}")
-	public String EliminarConductor(@PathVariable String nomusu){
-		Store.EliminarConductor(nomusu);
+	public String EliminarConductor(@PathVariable String nomusu, RedirectAttributes redAtrib){
+		if(!Store.EliminarConductor(nomusu))
+		{
+			redAtrib.addFlashAttribute("mensaje", "No se encontró al conductor.");
+		}
 		return "redirect:/conductores";
 	}
 

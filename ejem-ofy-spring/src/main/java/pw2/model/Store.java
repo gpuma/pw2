@@ -15,8 +15,13 @@ public class Store{
     return ofy().load().type(Conductor.class).list();
   }
 
-  public static void EliminarConductor(String nomusu){
+  public static boolean EliminarConductor(String nomusu){
     Conductor cond = ofy().load().type(Conductor.class).id(nomusu).now();
+    //si no existe
+    if(cond==null)
+      return false;
+
     ofy().delete().entity(cond);
+    return true;
   }
 }

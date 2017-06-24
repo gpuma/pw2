@@ -3,4 +3,6 @@
   <application>_your_app_id_</application>
   <version>alpha-001</version>
   <threadsafe>true</threadsafe>
+  <!-- para usuar atributos de sesión-->
+  <sessions-enabled>true</sessions-enabled>
 </appengine-web-app>
