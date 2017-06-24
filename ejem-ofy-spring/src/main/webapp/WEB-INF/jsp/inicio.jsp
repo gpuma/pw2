@@ -7,6 +7,5 @@
 <body>
 
 <h1>Proyecto base de GAE utilizando Spring MVC</h1>
-Prueba ingresar a /hola
 </body>
 </html>

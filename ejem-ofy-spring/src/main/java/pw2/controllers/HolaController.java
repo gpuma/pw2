@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class HolaController{
-	@RequestMapping("/hola")
-	public String mostrarHola(){
-		//usa el ViewResolver
-		return "hola";
-	}
+
 	@RequestMapping("/nuevo")
 	public String IngresarConductor(Model model){
 		model.addAttribute("cond", new Conductor());
@@ -26,9 +22,6 @@ public class HolaController{
 
 	@RequestMapping("/registrar")
 	public String RegistrarConductor(@ModelAttribute Conductor cond){
-		System.out.println(cond.getUsuario());
-		System.out.println(cond.getTelefono());
-		System.out.println(cond.getFecNac());
 
 		//TODO: llenando los reviews falsos
 		cond.setReviews(Arrays.asList(
@@ -36,13 +29,17 @@ public class HolaController{
 										new Review(2L, "lo peor", new Date()),
 										new Review(3L, "lo recomiendo a todos", new Date())));
 		Store.GuardarConductor(cond);
+		return "redirect:/conductores";
+	}
 
-		return "redirect:/hola";
+	@RequestMapping("/conductores")
+	public String MostrarConductores(Model model){
+		model.addAttribute("conductores", Store.TraerConductores());
+		return "conductores";
 	}
 
 	@RequestMapping("/")
 	public String mostrarInicio(){
-		//usa el ViewResolver
 		return "inicio";
 	}
 }
