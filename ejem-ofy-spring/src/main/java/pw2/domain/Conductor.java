@@ -1,13 +1,20 @@
 package pw2.domain;
 
+
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
 import java.util.Date;
+import java.util.List;
 import java.io.Serializable;
 
 //el POJO tiene que ser Serializable para el DataBinding de SPRING!!!!!
+@Entity
 public class Conductor implements Serializable{
+  @Id private Long id;
   private String usuario;
   private String telefono;
   private Date fecNac;
+  private List<Review> reviews;
 
 	/**
 	* Default empty Conductor constructor
@@ -19,11 +26,29 @@ public class Conductor implements Serializable{
 	/**
 	* Default Conductor constructor
 	*/
-	public Conductor(String usuario, String telefono, Date fecNac) {
+	public Conductor(Long id, String usuario, String telefono, Date fecNac, List<Review> reviews) {
 		super();
+		this.id = id;
 		this.usuario = usuario;
 		this.telefono = telefono;
 		this.fecNac = fecNac;
+		this.reviews = reviews;
+	}
+
+	/**
+	* Returns value of id
+	* @return
+	*/
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	* Sets new value of id
+	* @param
+	*/
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	/**
@@ -72,5 +97,21 @@ public class Conductor implements Serializable{
 	*/
 	public void setFecNac(Date fecNac) {
 		this.fecNac = fecNac;
+	}
+
+	/**
+	* Returns value of reviews
+	* @return
+	*/
+	public List<Review> getReviews() {
+		return reviews;
+	}
+
+	/**
+	* Sets new value of reviews
+	* @param
+	*/
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 }

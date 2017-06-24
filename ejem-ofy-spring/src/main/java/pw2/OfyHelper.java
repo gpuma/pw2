@@ -16,6 +16,8 @@
 //[START all]
 package pw2;
 
+import pw2.domain.*;
+
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
 import com.googlecode.objectify.ObjectifyService;
@@ -32,8 +34,8 @@ public class OfyHelper implements ServletContextListener {
     // This will be invoked as part of a warmup request, or the first user request if no warmup
     // request.
     //todo: registrar mis clases
-    //ObjectifyService.register(Guestbook.class);
-    //ObjectifyService.register(Greeting.class);
+    ObjectifyService.register(Conductor.class);
+    ObjectifyService.register(Review.class);
   }
 
   public void contextDestroyed(ServletContextEvent event) {
