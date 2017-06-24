@@ -14,4 +14,9 @@ public class Store{
   public static List<Conductor> TraerConductores(){
     return ofy().load().type(Conductor.class).list();
   }
+
+  public static void EliminarConductor(String nomusu){
+    Conductor cond = ofy().load().type(Conductor.class).id(nomusu).now();
+    ofy().delete().entity(cond);
+  }
 }

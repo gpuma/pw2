@@ -20,6 +20,7 @@
           <td>${c.usuario}</td>
           <td>${c.telefono}</td>
           <td>${c.fecNac}</td>
+          <td><a href="eliminar/${c.usuario}">Eliminar</a></td>
       </tr>
   </c:forEach>
   </table>

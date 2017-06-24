@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class HolaController{
@@ -25,10 +26,17 @@ public class HolaController{
 
 		//TODO: llenando los reviews falsos
 		cond.setReviews(Arrays.asList(
-										new Review(1L, "muy amable", new Date()),
-										new Review(2L, "lo peor", new Date()),
-										new Review(3L, "lo recomiendo a todos", new Date())));
+										//si pasamos null a un Id Long lo  autogenera
+										new Review(null, "muy amable", new Date()),
+										new Review(null, "lo peor", new Date()),
+										new Review(null, "lo recomiendo a todos", new Date())));
 		Store.GuardarConductor(cond);
+		return "redirect:/conductores";
+	}
+
+	@RequestMapping("/eliminar/{nomusu}")
+	public String EliminarConductor(@PathVariable String nomusu){
+		Store.EliminarConductor(nomusu);
 		return "redirect:/conductores";
 	}
 

@@ -10,8 +10,7 @@ import java.io.Serializable;
 //el POJO tiene que ser Serializable para el DataBinding de SPRING!!!!!
 @Entity
 public class Conductor implements Serializable{
-  @Id private Long id;
-  private String usuario;
+  @Id private String usuario;
   private String telefono;
   private Date fecNac;
   private List<Review> reviews;
@@ -26,29 +25,12 @@ public class Conductor implements Serializable{
 	/**
 	* Default Conductor constructor
 	*/
-	public Conductor(Long id, String usuario, String telefono, Date fecNac, List<Review> reviews) {
+	public Conductor(String usuario, String telefono, Date fecNac, List<Review> reviews) {
 		super();
-		this.id = id;
 		this.usuario = usuario;
 		this.telefono = telefono;
 		this.fecNac = fecNac;
 		this.reviews = reviews;
-	}
-
-	/**
-	* Returns value of id
-	* @return
-	*/
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	* Sets new value of id
-	* @param
-	*/
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	/**
