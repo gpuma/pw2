@@ -18,13 +18,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class HolaController{
 
-	@RequestMapping("/nuevo")
+	@RequestMapping("/conductores/nuevo")
 	public String IngresarConductor(Model model){
 		model.addAttribute("cond", new Conductor());
 		return "nuevo";
 	}
 
-	@RequestMapping("/registrar")
+	@RequestMapping("/conductores/registrar")
 	public String RegistrarConductor(@ModelAttribute Conductor cond){
 
 		//TODO: llenando los reviews falsos
@@ -38,7 +38,7 @@ public class HolaController{
 	}
 
 	//@RequestMapping(value="/eliminar/{nomusu}", method = RequestMethod.POST)
-	@RequestMapping("/eliminar/{nomusu}")
+	@RequestMapping("/conductor/{nomusu}/eliminar")
 	public String EliminarConductor(@PathVariable String nomusu, RedirectAttributes redAtrib){
 		if(!Store.EliminarConductor(nomusu))
 		{
@@ -51,6 +51,12 @@ public class HolaController{
 	public String MostrarConductores(Model model){
 		model.addAttribute("conductores", Store.TraerConductores());
 		return "conductores";
+	}
+
+	@RequestMapping("/conductor/{nomusu}")
+	public String MostrarConductor(Model model, @PathVariable String nomusu){
+		model.addAttribute("cond", Store.TraerConductor(nomusu));
+		return "conductor";
 	}
 
 	@RequestMapping("/")

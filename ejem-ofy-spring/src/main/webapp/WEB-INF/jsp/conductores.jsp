@@ -28,12 +28,13 @@
             <td>${c.usuario}</td>
             <td>${c.telefono}</td>
             <td>${c.fecNac}</td>
-            <td><a href="eliminar/${c.usuario}">Eliminar</a></td>
+            <td><a href="/conductor/${c.usuario}">Comentarios...</a></td>
+            <td><a href="/conductor/${c.usuario}/eliminar">Eliminar</a></td>
         </tr>
     </c:forEach>
     </table>
   </c:if>
-  <a href="nuevo">Nuevo conductor...</a>
+  <a href="/conductores/nuevo">Nuevo conductor...</a>
 </form:form>
 </body>
 </html>

@@ -15,8 +15,12 @@ public class Store{
     return ofy().load().type(Conductor.class).list();
   }
 
+  public static Conductor TraerConductor(String nomusu){
+    return ofy().load().type(Conductor.class).id(nomusu).now();
+  }
+
   public static boolean EliminarConductor(String nomusu){
-    Conductor cond = ofy().load().type(Conductor.class).id(nomusu).now();
+    Conductor cond = TraerConductor(nomusu);
     //si no existe
     if(cond==null)
       return false;

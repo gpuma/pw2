@@ -7,7 +7,7 @@
 <title>Nuevo conductor</title>
 </head>
 <body>
-<form:form commandName="cond" action="/registrar" method="POST">
+<form:form commandName="cond" action="/conductores/registrar" method="POST">
   <h1>Nuevo conductor</h1>
   Usuario <form:input id="usuario" path="usuario"/>
   Telefono <form:input id="telefono" path="telefono"/>
