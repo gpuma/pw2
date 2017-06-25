@@ -19,6 +19,7 @@
       <li>${r.fecha}</li>
     </c:forEach>
   </ul>
+  <a href="/conductores">Regresar</a>
 </form:form>
 </body>
 </html>
