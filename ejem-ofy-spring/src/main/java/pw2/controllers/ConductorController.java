@@ -9,6 +9,7 @@ import java.util.Date;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -26,13 +27,6 @@ public class ConductorController{
 
 	@RequestMapping("/conductores/registrar")
 	public String RegistrarConductor(@ModelAttribute Conductor cond){
-
-		//TODO: llenando los reviews falsos
-		cond.setReviews(Arrays.asList(
-										//si pasamos null a un Id Long lo  autogenera
-										new Review(null, "muy amable", new Date()),
-										new Review(null, "lo peor", new Date()),
-										new Review(null, "lo recomiendo a todos", new Date())));
 		Store.GuardarConductor(cond);
 		return "redirect:/conductores";
 	}
@@ -45,6 +39,15 @@ public class ConductorController{
 			redAtrib.addFlashAttribute("mensaje", "No se encontró al conductor.");
 		}
 		return "redirect:/conductores";
+	}
+
+	@RequestMapping("/conductores/{nomusu}/reviews/nuevo")
+	public String NuevoReview(@PathVariable String nomusu, @RequestParam String review){
+
+		Conductor cond = Store.TraerConductor(nomusu);
+		cond.getReviews().add(new Review(null, review, new Date()));
+		Store.GuardarConductor(cond);
+		return "redirect:/conductor/" + cond.getUsuario();
 	}
 
 	@RequestMapping("/conductores")

@@ -3,6 +3,7 @@ package pw2.domain;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Ignore;
 import java.util.Date;
 import java.util.List;
 import java.io.Serializable;
