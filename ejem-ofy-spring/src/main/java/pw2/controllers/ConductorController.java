@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class HolaController{
+public class ConductorController{
 
 	@RequestMapping("/conductores/nuevo")
 	public String IngresarConductor(Model model){
