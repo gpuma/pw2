@@ -45,6 +45,10 @@ dependencies {
   compile 'com.google.appengine:appengine-endpoints:1.9.28' //add this line to avoid upper comment
   compile 'com.google.guava:guava:19.0'//add this
   compile 'com.googlecode.objectify:objectify:5.1.17'  //works with ObjectifyFilter in web.xml
+
+  // para subir imágenes
+  compile 'org.apache.commons:commons-io:+'
+  compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.3.1'
 }
 
 // [START model]

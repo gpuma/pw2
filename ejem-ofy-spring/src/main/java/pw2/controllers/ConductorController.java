@@ -6,17 +6,21 @@ import pw2.model.Store;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Date;
+import java.io.IOException;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+//para subir archivos
+import org.springframework.web.multipart.MultipartFile;
 //para pasar atributos en un redirect
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class HolaController{
+public class ConductorController{
 
 	@RequestMapping("/conductores/nuevo")
 	public String IngresarConductor(Model model){
@@ -25,7 +29,14 @@ public class HolaController{
 	}
 
 	@RequestMapping("/conductores/registrar")
-	public String RegistrarConductor(@ModelAttribute Conductor cond){
+	public String RegistrarConductor(@ModelAttribute Conductor cond,
+																		@RequestParam("archivo") MultipartFile archivo)
+																		throws IOException {
+
+		if(archivo.isEmpty()){
+			//TODO: manejar esto
+		}
+		cond.setFotoPerfil(archivo.getBytes());
 
 		//TODO: llenando los reviews falsos
 		cond.setReviews(Arrays.asList(

@@ -13,7 +13,10 @@ public class Conductor implements Serializable{
   @Id private String usuario;
   private String telefono;
   private Date fecNac;
+  private byte[] fotoPerfil;
   private List<Review> reviews;
+
+
 
 	/**
 	* Default empty Conductor constructor
@@ -25,13 +28,15 @@ public class Conductor implements Serializable{
 	/**
 	* Default Conductor constructor
 	*/
-	public Conductor(String usuario, String telefono, Date fecNac, List<Review> reviews) {
+	public Conductor(String usuario, String telefono, Date fecNac, byte[] fotoPerfil, List<Review> reviews) {
 		super();
 		this.usuario = usuario;
 		this.telefono = telefono;
 		this.fecNac = fecNac;
+		this.fotoPerfil = fotoPerfil;
 		this.reviews = reviews;
 	}
+
 
 	/**
 	* Returns value of usuario
@@ -79,6 +84,14 @@ public class Conductor implements Serializable{
 	*/
 	public void setFecNac(Date fecNac) {
 		this.fecNac = fecNac;
+	}
+
+	public byte[] getFotoPerfil() {
+		return fotoPerfil;
+	}
+
+	public void setFotoPerfil(byte[] fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
 	}
 
 	/**

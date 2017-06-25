@@ -8,10 +8,10 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd     
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-        
+
     <context:component-scan base-package="pw2.controllers"/>
     <mvc:annotation-driven/>
 
@@ -24,10 +24,14 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--para subir archivos-->
+    <bean id="multipartResolver" class="org.gmr.web.multipart.GMultipartResolver">
+      <property name="maxUploadSize" value="1048576" />
+    </bean>
     <!--
     <context:component-scan base-package="app19a.service"/>
-     
-    
-    
+
+
+
     -->
 </beans>
