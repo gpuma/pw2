@@ -32,14 +32,16 @@ public class Store{
   }
 
   public static void AgregarReview(Conductor cond, String review){
-
     Review nuevoReview = new Review(null, review, new Date());
     ofy().save().entity(nuevoReview).now();
     //TODO: probablemente no es la manera más eficiente
     nuevoReview = ofy().load().entity(nuevoReview).now();
     System.out.println("********************"+nuevoReview.getId());
     Key<Review> llave = Key.create(Review.class, nuevoReview.getId());
+    //TODO: borrar
+    System.out.println("********************"+cond.getReviews().size());
     cond.getReviews().add(llave);
     ofy().save().entity(cond).now();
+    System.out.println("********************LLega aquí??");
   }
 }

@@ -15,7 +15,7 @@ public class Conductor implements Serializable{
   @Id private String usuario;
   private String telefono;
   private Date fecNac;
-  private List<Key<Review>> reviews;
+  private List<Key<Review>> reviews = new ArrayList<Key<Review>>();
 
 	/**
 	* Default empty Conductor constructor
