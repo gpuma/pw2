@@ -5,6 +5,8 @@ import pw2.domain.*;
 import java.util.List;
 import java.util.Date;
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.Ref;
+import com.googlecode.objectify.annotation.Load;
 import com.googlecode.objectify.ObjectifyService;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
@@ -36,12 +38,9 @@ public class Store{
     ofy().save().entity(nuevoReview).now();
     //TODO: probablemente no es la manera más eficiente
     nuevoReview = ofy().load().entity(nuevoReview).now();
-    System.out.println("********************"+nuevoReview.getId());
-    Key<Review> llave = Key.create(Review.class, nuevoReview.getId());
-    //TODO: borrar
-    System.out.println("********************"+cond.getReviews().size());
-    cond.getReviews().add(llave);
+    Key<Review> llaveReview = Key.create(Review.class, nuevoReview.getId());
+    Ref<Review> reviewRef = Ref.create(llaveReview);
+    cond.addReviewRef(reviewRef);
     ofy().save().entity(cond).now();
-    System.out.println("********************LLega aquí??");
   }
 }

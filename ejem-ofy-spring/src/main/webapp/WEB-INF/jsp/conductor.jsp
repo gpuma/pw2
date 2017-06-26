@@ -15,6 +15,7 @@
   <h4>${cond.fecNac}</h4>
   <ul>
     <c:forEach items="${cond.reviews}" var="r">
+      <li>${r.id}</li>
       <li>${r.comentario}</li>
       <li>${r.fecha}</li>
     </c:forEach>

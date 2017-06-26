@@ -1,6 +1,8 @@
 package pw2.domain;
 
+import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.annotation.Load;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Ignore;
@@ -15,7 +17,7 @@ public class Conductor implements Serializable{
   @Id private String usuario;
   private String telefono;
   private Date fecNac;
-  private List<Key<Review>> reviews = new ArrayList<Key<Review>>();
+  @Load private List<Ref<Review>> reviews = new ArrayList<Ref<Review>>();
 
 	/**
 	* Default empty Conductor constructor
@@ -28,7 +30,7 @@ public class Conductor implements Serializable{
 	/**
 	* Default Conductor constructor
 	*/
-	public Conductor(String usuario, String telefono, Date fecNac, List<Key<Review>> reviews) {
+	public Conductor(String usuario, String telefono, Date fecNac, List<Ref<Review>> reviews) {
 		super();
 		this.usuario = usuario;
 		this.telefono = telefono;
@@ -84,19 +86,21 @@ public class Conductor implements Serializable{
 		this.fecNac = fecNac;
 	}
 
-	/**
-	* Returns value of reviews
-	* @return
-	*/
-	public List<Key<Review>> getReviews() {
-		return reviews;
+  //encapsulación de las referencias de objectify
+	public List<Review> getReviews() {
+		List<Review> reviews = new ArrayList<Review>();
+    for(Ref<Review> refReview : this.reviews){
+      reviews.add(refReview.get());
+    }
+    return reviews;
 	}
-
-	/**
-	* Sets new value of reviews
-	* @param
-	*/
-	public void setReviews(List<Key<Review>> reviews) {
-		this.reviews = reviews;
+  /*
+  //TODO: check this shit
+	public void setReviews(List<Review> reviews) {
+		this.reviews = Ref.create(reviews);
 	}
+  */
+  public void addReviewRef(Ref<Review> reviewRef){
+    this.reviews.add(reviewRef);
+  }
 }
