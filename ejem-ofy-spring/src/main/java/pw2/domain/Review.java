@@ -2,6 +2,7 @@ package pw2.domain;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,7 +10,7 @@ import java.io.Serializable;
 public class Review implements Serializable{
   @Id private Long id;
   private String comentario;
-  private Date fecha;
+  @Index private Date fecha;
 
 	/**
 	* Default empty Review constructor

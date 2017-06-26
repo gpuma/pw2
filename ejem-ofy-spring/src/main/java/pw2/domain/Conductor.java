@@ -1,11 +1,12 @@
 package pw2.domain;
 
-
+import com.googlecode.objectify.Key;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Ignore;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 import java.io.Serializable;
 
 //el POJO tiene que ser Serializable para el DataBinding de SPRING!!!!!
@@ -14,19 +15,20 @@ public class Conductor implements Serializable{
   @Id private String usuario;
   private String telefono;
   private Date fecNac;
-  private List<Review> reviews;
+  private List<Key<Review>> reviews;
 
 	/**
 	* Default empty Conductor constructor
 	*/
 	public Conductor() {
 		super();
+    //this.reviews = new ArrayList<Key<Review>>();
 	}
 
 	/**
 	* Default Conductor constructor
 	*/
-	public Conductor(String usuario, String telefono, Date fecNac, List<Review> reviews) {
+	public Conductor(String usuario, String telefono, Date fecNac, List<Key<Review>> reviews) {
 		super();
 		this.usuario = usuario;
 		this.telefono = telefono;
@@ -86,7 +88,7 @@ public class Conductor implements Serializable{
 	* Returns value of reviews
 	* @return
 	*/
-	public List<Review> getReviews() {
+	public List<Key<Review>> getReviews() {
 		return reviews;
 	}
 
@@ -94,7 +96,7 @@ public class Conductor implements Serializable{
 	* Sets new value of reviews
 	* @param
 	*/
-	public void setReviews(List<Review> reviews) {
+	public void setReviews(List<Key<Review>> reviews) {
 		this.reviews = reviews;
 	}
 }

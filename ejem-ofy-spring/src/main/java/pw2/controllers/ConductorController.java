@@ -43,10 +43,10 @@ public class ConductorController{
 
 	@RequestMapping("/conductores/{nomusu}/reviews/nuevo")
 	public String NuevoReview(@PathVariable String nomusu, @RequestParam String review){
-
+		//TODO: change this shit
 		Conductor cond = Store.TraerConductor(nomusu);
-		cond.getReviews().add(new Review(null, review, new Date()));
-		Store.GuardarConductor(cond);
+		//cond.getReviews().add(new Review(null, review, new Date()));
+		Store.AgregarReview(cond, review);
 		return "redirect:/conductor/" + cond.getUsuario();
 	}
 
