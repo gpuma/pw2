@@ -11,16 +11,25 @@
 <body>
 <form:form commandName="cond" action="/conductores/${cond.usuario}/reviews/nuevo" method="POST">
   <h1>${cond.usuario}</h1>
-  <h4>${cond.telefono}</h4>
-  <h4>${cond.fecNac}</h4>
   <ul>
-    <c:forEach items="${cond.reviews}" var="r">
-      <li>${r.id}</li>
-      <li>${r.comentario}</li>
-      <li>${r.fecha}</li>
-      <li><a href="/conductor/${cond.usuario}/reviews/${r.id}/modificar">Editar</a></li>
-    </c:forEach>
+    <li>Telefono: ${cond.telefono}</li>
+    <li>Fecha de nacimiento: ${cond.fecNac}</li>
   </ul>
+  <h2>Reviews</h2>
+  <table>
+    <tr>
+      <th>Comentario</th>
+      <th>Fecha</th>
+      <th></th>
+    </tr>
+    <c:forEach items="${cond.reviews}" var="r">
+      <tr>
+      <td>${r.comentario}</td>
+      <td>${r.fecha}</td>
+      <td><a href="/conductor/${cond.usuario}/reviews/${r.id}/modificar">Editar</a></td>
+      </tr>
+    </c:forEach>
+  </table>
   <h2>Nuevo comentario</h2>
   <div>
     <input type="text" id="review" name="review" />
