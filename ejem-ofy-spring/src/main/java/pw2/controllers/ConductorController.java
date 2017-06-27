@@ -50,7 +50,6 @@ public class ConductorController{
 		return "redirect:/conductor/" + cond.getUsuario();
 	}
 
-	//en realidad solo necesitamos a reviewId
 	@RequestMapping("/conductor/{nomusu}/reviews/{reviewId}/modificar")
 	public String ModificarReview(Model model, @PathVariable String nomusu, @PathVariable Long reviewId){
 		Review r = Store.TraerReview(reviewId);
@@ -59,11 +58,16 @@ public class ConductorController{
 		return "review_editar";
 	}
 
-	//en realidad solo necesitamos a reviewId
 	@RequestMapping("/conductor/{nomusu}/reviews/{reviewId}/guardar")
 	public String GuardarCambiosReview(@PathVariable Long reviewId, @RequestParam String comentario){
-		//TODO: completar
 		Store.ModificarReview(reviewId, comentario);
+		return "redirect:/conductor/{nomusu}";
+	}
+
+	@RequestMapping("/conductor/{nomusu}/reviews/{reviewId}/eliminar")
+	public String GuardarCambiosReview(@PathVariable String nomusu, @PathVariable Long reviewId){
+		//el usuario es necesario para modifcar su lista de llaves
+		Store.EliminarReview(nomusu, reviewId);
 		return "redirect:/conductor/{nomusu}";
 	}
 

@@ -6,9 +6,12 @@ import com.googlecode.objectify.annotation.Load;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Ignore;
+
+import java.util.Iterator;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+
 import java.io.Serializable;
 
 //el POJO tiene que ser Serializable para el DataBinding de SPRING!!!!!
@@ -90,16 +93,25 @@ public class Conductor implements Serializable{
 	public List<Review> getReviews() {
 		List<Review> reviews = new ArrayList<Review>();
     for(Ref<Review> refReview : this.reviews){
+      //TODO: optimizar
       reviews.add(refReview.get());
     }
     return reviews;
 	}
-  /*
-  //TODO: check this shit
-	public void setReviews(List<Review> reviews) {
-		this.reviews = Ref.create(reviews);
-	}
-  */
+
+  public boolean quitarReview(Ref<Review> reviewRef){
+    //no usamos for each para evitar ConcurrentModificationException
+    Iterator<Ref<Review>> iter = this.reviews.iterator();
+    while(iter.hasNext()){
+      Ref<Review> r = iter.next();
+      if(r.equals(reviewRef)){
+        this.reviews.remove(r);
+        return true;
+      }
+    }
+    return false;
+  }
+
   public void addReviewRef(Ref<Review> reviewRef){
     this.reviews.add(reviewRef);
   }

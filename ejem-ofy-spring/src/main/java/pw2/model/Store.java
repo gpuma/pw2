@@ -37,6 +37,23 @@ public class Store{
     return true;
   }
 
+  public static boolean EliminarReview(String nomusu, Long reviewId){
+    Conductor cond = TraerConductor(nomusu);
+    Review r = TraerReview(reviewId);
+
+    //si no existe
+    if(cond == null || r == null)
+      return false;
+
+    Key<Review> llaveReview = Key.create(Review.class, reviewId);
+    Ref<Review> reviewRef = Ref.create(llaveReview);
+    if(!cond.quitarReview(reviewRef))
+      return false;
+    ofy().save().entity(cond);
+    ofy().delete().entity(r);
+    return true;
+  }
+
   public static void ModificarReview(Long reviewId, String review){
     Review r = ofy().load().type(Review.class).id(reviewId).now();
     r.setComentario(review);

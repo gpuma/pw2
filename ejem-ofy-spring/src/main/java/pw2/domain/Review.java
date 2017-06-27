@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Entity
 public class Review implements Serializable{
   @Id private Long id;
-  private String comentario;
+  @Index private String comentario;
   @Index private Date fecha;
 
 	/**

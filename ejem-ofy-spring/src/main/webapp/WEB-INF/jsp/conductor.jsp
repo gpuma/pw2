@@ -27,6 +27,7 @@
       <td>${r.comentario}</td>
       <td>${r.fecha}</td>
       <td><a href="/conductor/${cond.usuario}/reviews/${r.id}/modificar">Editar</a></td>
+      <td><a href="/conductor/${cond.usuario}/reviews/${r.id}/eliminar">Eliminar</a></td>
       </tr>
     </c:forEach>
   </table>
