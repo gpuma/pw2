@@ -18,6 +18,7 @@
       <li>${r.id}</li>
       <li>${r.comentario}</li>
       <li>${r.fecha}</li>
+      <li><a href="/conductor/${cond.usuario}/reviews/${r.id}/modificar">Editar</a></li>
     </c:forEach>
   </ul>
   <h2>Nuevo comentario</h2>

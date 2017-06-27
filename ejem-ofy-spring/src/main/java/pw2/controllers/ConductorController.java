@@ -50,6 +50,14 @@ public class ConductorController{
 		return "redirect:/conductor/" + cond.getUsuario();
 	}
 
+	//en realidad solo necesitamos a reviewId
+	@RequestMapping("/conductor/{nomusu}/reviews/{reviewId}/modificar")
+	public String ModificarReview(@PathVariable Long reviewId, @RequestParam String review){
+		//TODO: completar
+		Store.ModificarReview(reviewId, review);
+		return "redirect:/conductor/{nomusu}";
+	}
+	
 	@RequestMapping("/conductores")
 	public String MostrarConductores(Model model){
 		model.addAttribute("conductores", Store.TraerConductores());

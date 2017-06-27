@@ -33,6 +33,12 @@ public class Store{
     return true;
   }
 
+  public static void ModificarReview(Long reviewId, String review){
+    Review r = ofy().load().type(Review.class).id(reviewId).now();
+    r.setComentario(review);
+    ofy().save().entity(r).now();
+  }
+
   public static void AgregarReview(Conductor cond, String review){
     Review nuevoReview = new Review(null, review, new Date());
     ofy().save().entity(nuevoReview).now();
