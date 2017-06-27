@@ -23,6 +23,10 @@ public class Store{
     return ofy().load().type(Conductor.class).id(nomusu).now();
   }
 
+  public static Review TraerReview(Long idReview){
+    return ofy().load().type(Review.class).id(idReview).now();
+  }
+
   public static boolean EliminarConductor(String nomusu){
     Conductor cond = TraerConductor(nomusu);
     //si no existe

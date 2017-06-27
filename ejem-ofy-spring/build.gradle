@@ -53,7 +53,10 @@ appengine {  // App Engine tasks configuration
     port = 8080                 // default
     //para especificar un datastore en otro sitio
     //para que funcione el hot reload
-    jvmFlags = ["-Ddatastore.backing_store=/home/gustavo/temp/local_db.bin", "-Dappengine.fullscan.seconds=5"]
+    //linux
+    //jvmFlags = ["-Ddatastore.backing_store=/home/gustavo/temp/local_db.bin", "-Dappengine.fullscan.seconds=5"]
+    //windows
+    jvmFlags = ["-Ddatastore.backing_store=C:/temp/local_db.bin", "-Dappengine.fullscan.seconds=5"]
   }
 
   deploy {   // deploy configuration

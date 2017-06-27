@@ -52,12 +52,21 @@ public class ConductorController{
 
 	//en realidad solo necesitamos a reviewId
 	@RequestMapping("/conductor/{nomusu}/reviews/{reviewId}/modificar")
-	public String ModificarReview(@PathVariable Long reviewId, @RequestParam String review){
+	public String ModificarReview(Model model, @PathVariable String nomusu, @PathVariable Long reviewId){
+		Review r = Store.TraerReview(reviewId);
+		model.addAttribute("review", r);
+		model.addAttribute("nomusu", nomusu);
+		return "review_editar";
+	}
+
+	//en realidad solo necesitamos a reviewId
+	@RequestMapping("/conductor/{nomusu}/reviews/{reviewId}/guardar")
+	public String GuardarCambiosReview(@PathVariable Long reviewId, @RequestParam String comentario){
 		//TODO: completar
-		Store.ModificarReview(reviewId, review);
+		Store.ModificarReview(reviewId, comentario);
 		return "redirect:/conductor/{nomusu}";
 	}
-	
+
 	@RequestMapping("/conductores")
 	public String MostrarConductores(Model model){
 		model.addAttribute("conductores", Store.TraerConductores());
